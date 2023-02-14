@@ -1,0 +1,40 @@
+{% extends "base1.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<!Doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</headz>
+<body>
+
+<div class="container py-4">
+
+    <div class="card">
+        <div class="card-header">
+            <b>Modificar Recibo</b>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Datos del Recibo</h4>
+            <!--{{request.user.is_authenticated}}-->
+            <form action="" class="formulario_cliente" method="POST">
+                                
+                {% csrf_token %}
+                {{ form | crispy}}
+                                
+                <br>
+                <button type="submit" id="btnRegistrar" class="btn btn-primary">Modificar</button>
+            </form>
+        {{ mensaje }}
+    </div>
+
+</div>
+
+</body>
+</html>
+
+{% endblock %}

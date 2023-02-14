@@ -1,0 +1,116 @@
+
+
+/*VIDEO FONDO*/
+.promo {
+    padding-top: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.promo h1 {
+    font-size: 3.5rem;
+    text-align: center;
+    color: #f3f3f3;
+    font-weight: 4000;
+}
+
+.promo p {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #f3f3f3;
+    font-weight: 1000;
+}
+
+
+#hero {
+    min-height: 90vh;
+    position:relative;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 102%;
+    object-fit: cover;
+    max-width: 100%;
+}
+
+.capa {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1c1c1d;
+    opacity: 2;
+    mix-blend-mode: overlay;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+
+/*CSS REDES*/
+:root {
+    --primary: #c0d4f1;
+    --white: #FFFFFF;
+    --greyLight-1: #E4EBF5;
+    --greyLight-2: #c8d0e7;
+    --greyDark: #9baacf;
+}
+
+.icon {
+    display: flex;
+    margin: auto;
+}
+ 
+.icon__facebook, .icon__twitter, .icon__whatsapp, .icon__linkedin, .icon__instagram {
+    width: 7rem;
+    height: 4rem;
+    margin-left: 13px;
+    margin-right: 13px;
+    border-radius: 50%;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var( --greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    font-size: 3.5rem;
+    cursor: pointer;
+    color: var(--greyDark);
+    transition: all 0.5s ease;
+}
+
+.icon__facebook:active, .icon__twitter:active, .icon__whatsapp:active, .icon__linkedin:active, .icon__instagram:active{
+    color: rgb(245, 167, 167);  
+}
+    
+.activo{
+    color: var( --primary);
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);    
+}
+    
+.icon__facebook:hover, .icon__twitter:hover, .icon__whatsapp:hover, .icon__linkedin:hover, .icon__instagram:hover {
+    color: var( --primary);
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);    
+}
+    
+.icon{
+    position: relative;
+    width: 470px;
+    height: 90px;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    transition: 0.5s;
+}

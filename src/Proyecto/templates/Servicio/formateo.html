@@ -1,0 +1,41 @@
+{% extends "../base1.html" %} 
+
+{% load static %}
+
+
+{% block js %}
+  
+{% endblock js %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="center-vertical bg-dark">
+        <div class="about-us-section bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                        <br><br>
+                        <div class="img-head">
+                            <img src="{% static 'images/formateo.png' %}" class="card-img-top" alt="Servicio1">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h2 class="text-head">
+                            Formateo y respaldo de información
+                        </h2>
+                        <div class="break-small mb-2">
+                            <p class="text-para" style="text-align: justify">
+                                El respaldo de información es la copia de los datos importantes de un dispositivo primario en uno ó varios dispositivos secundarios, ello para que en caso de que el primer dispositivo sufra una avería electromecánica ó un error en su estructura lógica, sea posible contar con la mayor parte de la información necesaria para continuar con las actividades rutinarias y evitar pérdida generalizada de datos.
+                                <br><br>
+                                La importancia radica en que todos los dispositivos de almacenamiento masivo de información tienen la posibilidad de fallar, por lo tanto es necesario que se cuente con una copia de seguridad de la información importante, ya que la probabilidad de que 2 dispositivos fallen de manera simultánea es menos probable.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

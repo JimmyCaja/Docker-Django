@@ -1,0 +1,25 @@
+{% extends "./base1.html" %} 
+
+{% load static %}
+
+
+{% block js %}
+  
+{% endblock js %}
+
+{% block body %}
+
+<main id="hero">
+  <div class="promo">
+    <h1></h1>
+    <p></p>
+  </div>
+  <video muted autoplay loop>
+    <source src="{% static 'video/SV.mp4' %}"
+    type="video/mp4">
+  </video>
+  <div class="capa"></div>
+</main>
+
+
+{% endblock %}

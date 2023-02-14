@@ -1,0 +1,87 @@
+{% extends "base1.html" %}
+
+{% block js %}
+
+    <script>
+        function eliminar_Producto(id) {
+            console.log(id)
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'La acción no se puede revertir',
+                icon: 'question',
+                showCancelButton: true,
+                cancelButtonText: 'No, Cancelar',
+                confirmButtonText: 'Sí, Eliminar',
+                reverseButtons:true,
+                confirmButtonColor: '#dc3545'
+            })
+            .then(function(result){
+                if(result.isConfirmed) {
+                    window.location.href = "eliminar/"+id+"/"
+                }
+            })
+        }
+    </script>
+
+{% endblock %}
+
+{% block tittle %} Lista de Productos {% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <div class="card">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-success" href="{% url 'registrarProducto' %}" role="button">Agregar nuevo Producto</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Productos</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nro. Serie</th>
+                        <th>Nombre</th>
+                        <th>Unidades</th>
+                        <th>Precio Compra</th>
+                        <th>Precio Venta</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Proveedor</th>
+                        <th>Operaciones</th>
+                    </tr>  
+                </thead>
+                <tbody>
+                    {% for pro in entity %}
+                    <tr>
+                        <td>{{ pro.id }}</td>
+                        <td>{{ pro.nroSerie }}</td>
+                        <td>{{ pro.nombre }}</td>
+                        <td>{{ pro.unidades }}</td>
+                        <td>{{ pro.precioCompra }}</td>
+                        <td>{{ pro.precioVenta }}</td>
+                        <td>{{ pro.marca }}</td>
+                        <td>{{ pro.modelo }}</td>
+                        <td>{{ pro.proveedor }}</td>
+                        <td>
+
+                        {% if perms.ServicioTecnico.change_producto %}
+                            <a class="btn btn-info" href="{% url 'modificarProducto' pro.id %}" role="button">Editar</a>
+                        {% endif %}
+
+                        {% if perms.ServicioTecnico.delete_producto %}
+                            <a class="btn btn-danger" onclick="eliminar_Producto({{ pro.id }})" href="#" role="button">Eliminar</a>
+                        {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div>
+                {% include 'paginator.html' %}
+            </div>
+        </div>
+        <div class="card-footer text-muted"></div>
+        
+    </div>
+</div>
+{% endblock %}

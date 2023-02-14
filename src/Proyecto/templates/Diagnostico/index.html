@@ -1,0 +1,79 @@
+{% extends "base1.html" %}
+
+{% block js %}
+
+    <script>
+        function eliminar_Diagnostico(id) {
+            console.log(id)
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'La acción no se puede revertir',
+                icon: 'question',
+                showCancelButton: true,
+                cancelButtonText: 'No, Cancelar',
+                confirmButtonText: 'Sí, Eliminar',
+                reverseButtons:true,
+                confirmButtonColor: '#dc3545'
+            })
+            .then(function(result){
+                if(result.isConfirmed) {
+                    window.location.href = "eliminar/"+id+"/"
+                }
+            })
+        }
+    </script>
+
+{% endblock %}
+
+{% block tittle %} Lista de Diagnosticos {% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <div class="card">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-success" href="{% url 'registrarDiagnostico' %}" role="button">Agregar un Diagnostico</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Diagnosticos</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripción</th>
+                        <th>Defecto</th>
+                        <th>Empleado</th>
+                        <th>Equipo</th>
+                        <th>Operaciones</th>
+                    </tr>  
+                </thead>
+                <tbody>
+                    {% for diag in entity %}
+                    <tr>
+                        <td>{{ diag.id }}</td>
+                        <td>{{ diag.descripcion }}</td>
+                        <td>{{ diag.defecto }}</td>
+                        <td>{{ diag.empleado }}</td>
+                        <td>{{ diag.equipo }}</td>
+                        
+                        <td>
+                        {% if perms.ServicioTecnico.change_diagnostico %}
+                            <a class="btn btn-info" href="{% url 'modificarDiagnostico' diag.id %}" role="button">Editar</a>
+                        {% endif %}
+
+                        {% if perms.ServicioTecnico.delete_diagnostico %}
+                            <a class="btn btn-danger" onclick="eliminar_Diagnostico({{ diag.id }})" href="#" role="button">Eliminar</a>
+                        {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div>
+                {% include 'paginator.html' %}
+            </div>
+        </div>
+        <div class="card-footer text-muted"></div>
+        
+    </div>
+</div>
+{% endblock %}

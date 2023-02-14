@@ -1,0 +1,44 @@
+{% extends "../base1.html" %} 
+
+{% load static %}
+
+
+{% block js %}
+  
+{% endblock js %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="center-vertical bg-dark">
+        <div class="about-us-section bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                        <div class="img-head">
+                            <br><br><br><br>
+                            <img src="{% static 'images/programas.jpg' %}" class="card-img-top" alt="Servicio1">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h2 class="text-head">
+                            Instalación de programas
+                        </h2>
+                        <div class="break-small mb-2"></div>
+                        <p class="text-para" style="text-align: justify">
+                            La instalación de los programas computacionales (software) es el proceso fundamental por el cual los nuevos programas son transferidos a un computador con el fin de ser configurados, y preparados para ser desarrollados.
+                        </p>
+                        
+                        <p style="text-align: justify">
+                            Una instalación exitosa es una condición necesaria para el funcionamiento de cualquier software. Mientras más complejo sea el software, es decir, entre otras características, mientras más archivos contenga, mientras mayor la dispersión de los archivos y mientras mayor sea la interdependencia con otros softwares, mayor es el riesgo de alguna falla durante la instalación. 
+                            <br>
+                            Si la instalación falla aunque sea solo parcialmente, el fin que persigue la instalación posiblemente no podrá ser alcanzado. Por esa razón, sobre todo en casos de software complejo, el desarrollo de un proceso de instalación confiable y seguro es una parte fundamental del equipo desarrollo del software.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "../base1.html" %} 
+
+{% load static %}
+
+
+{% block js %}
+  
+{% endblock js %}
+
+{% block body %}
+<div class="container py-5">
+<div class="center-vertical bg-dark">
+    <div class="about-us-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                    <div class="img-head">
+                        <img src="{% static 'images/mante.png' %}" class="card-img-top" alt="Servicio1">
+                    </div>
+                    <br><br><br>
+                    <div class="img-head">
+                        <img src="{% static 'images/mante proactivo.jpg' %}" class="card-img-top" alt="Servicio1">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <h2 class="text-head">
+                        Mantenimiento de computadoras
+                    </h2>
+                    <div class="break-small mb-2">
+                    <p class="text-para" style="text-align: justify">
+                        Una computadora es la herramienta principal de trabajo o estudio.
+                        Es por ello que mantenerla en óptimas condiciones de funcionamiento es crucial para evitarnos problemas, y para lograr nuestros objetivos.
+                        <br>
+                        <h2 class="text-head" style="text-align: justify">Tipos de mantenimiento</h2>
+                        <ul>
+                            <li>
+                                Mantenimiento preventivo
+                            </li>
+                        </ul>
+                        <p style="text-align: justify">
+                            Se podría definir al mantenimiento preventivo de una computadora como la necesidad de crear un ámbito de funcionamiento favorable para el computador, es decir la necesidad llevar a cabo una serie de actividades para que el equipo de cómputo se encuentre protegido ante cualquier problema.
+                            <br>
+                            Por ejemplo, la mayor parte de las computadoras suelen fallar debido a la acumulación de polvo sobre sus componentes o rejillas de ventilación. Es por ello que se hace evidente la necesidad de mantenerlo limpio, tanto por dentro como por fuera, como así también comprobar que todos sus periféricos, cables, adaptadores, estabilizadores y hardware se encuentren en excelentes condiciones de uso.
+                        </p>
+                        <ul>
+                            <li>
+                                Mantenimiento correctivo
+                            </li>
+                        </ul>
+                        <p style="text-align: justify">
+                            Básicamente, el mantenimiento correctivo de una computadora se realiza con el objetivo de solucionar los problemas que se suscitan con el uso del equipo, es decir reparar lo que se pueda haber averiado.
+                            <br>
+                            Este mantenimiento correctivo es la forma más simple de proporcionar reparación y mantenimiento a una computadora, ya que se realiza una vez que el equipo ha fallado, y por lo general implica el recambio de alguno de los componentes del hardware.
+                        </p>
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base1.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<!Doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <div class="container py-4">
+    <div class="card">
+        <div class="card-header">
+            <b>Modificar Equipo</b>
+        </div>
+        <div class="card-body" style="width: 70%;">
+            <h4 class="card-title">Datos del Equipo</h4>
+            <!--{{request.user.is_authenticated}}-->
+            <form action="" class="formulario_cliente" method="POST">
+                                
+                {% csrf_token %}
+                {{ form | crispy}}
+                                
+                <br>
+                <button type="submit" id="btnRegistrar" class="btn btn-primary">Modificar</button>
+            </form>
+            {{ mensaje }}
+            
+        </div>
+        <div class="card-footer text-muted"></div>
+
+    </div>
+</body>
+</html>
+
+{% endblock %}

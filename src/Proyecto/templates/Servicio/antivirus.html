@@ -1,0 +1,69 @@
+{% extends "../base1.html" %} 
+
+{% load static %}
+
+
+{% block js %}
+  
+{% endblock js %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="center-vertical bg-dark">
+        <div class="about-us-section bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                        <div class="img-head">
+                            <img src="{% static 'images/antivirus.png' %}" class="card-img-top" alt="Servicio1">
+                        </div>
+                        <br>
+                        <div class="img-head">
+                            <img src="{% static 'images/antivirus2.png' %}" class="card-img-top" alt="Servicio1">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h2 class="text-head">
+                            Activación de antivirus
+                        </h2>
+                        <div class="break-small mb-2">
+                        <p class="text-para" style="text-align: justify">
+                            Hoy en día nadie duda de la importancia de contar con un antivirus fiable y actualizado que proteja a tu ordenador de posibles ataques, pero dependiendo de qué tipo de antivirus tengas instalado en tu equipo, tendrás una mejor o peor seguridad.
+                            <br>
+                            <h2 class="text-head" style="text-align: justify">Tipos de antivirus</h2>
+                            <ul>
+                                <li>
+                                    Antivirus preventivo
+                                </li>
+                            </ul>
+                            <p style="text-align: justify">
+                                Se caracterizan porque analizan la entrada y salida de todos los datos en tu ordenador con la finalidad de interceptar posibles amenazas, anticipándose a la infección del equipo por parte de programas maliciosos. Están instalados en la memoria interna del ordenador y en ocasiones pueden llegar a ralentizar el funcionamiento del mismo.
+                            </p>
+                            <ul>
+                                <li>
+                                    Antivirus identificadores
+                                </li>
+                            </ul>
+                            <p style="text-align: justify">
+                                Son antivirus que exploran el sistema operativo de tu ordenador con la finalidad de identificar posibles virus existentes en el mismo. Rastrean secuencias de bytes de códigos específicos e intentan identificar comportamientos extraños o patrones fuera dentro de lo común dentro de los programas existentes.
+                            </p>
+                            <ul>
+                                <li>
+                                    Antivirus descontaminadores
+                                </li>
+                            </ul>
+                            <p style="text-align: justify">
+                                Cuando el virus ya se encuentra identificado en nuestro ordenador, el antivirus de tipo descontaminador se encarga de eliminar esta infección. Tiene algunas funciones similares a los antivirus identificadores.
+                            </p>
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+
+
+{% endblock %}

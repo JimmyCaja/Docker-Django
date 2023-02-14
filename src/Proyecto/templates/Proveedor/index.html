@@ -1,0 +1,77 @@
+{% extends "base1.html" %}
+
+{% block js %}
+
+    <script>
+        function eliminar_Proveedor(ruc) {
+            console.log(ruc)
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'La acción no se puede revertir',
+                icon: 'question',
+                showCancelButton: true,
+                cancelButtonText: 'No, Cancelar',
+                confirmButtonText: 'Sí, Eliminar',
+                reverseButtons:true,
+                confirmButtonColor: '#dc3545'
+            })
+            .then(function(result){
+                if(result.isConfirmed) {
+                    window.location.href = "eliminar/"+ruc+"/"
+                }
+            })
+        }
+    </script>
+
+{% endblock %}
+
+{% block tittle %} Lista de Proveedores {% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <div class="card">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-success" href="{% url 'registrarProveedor' %}" role="button">Agregar nuevo Proveedor</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Proveedores</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>RUC</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Dirección</th>
+                        <th>Operaciones</th>
+                    </tr>  
+                </thead>
+                <tbody>
+                    {% for prov in entity %}
+                    <tr>
+                        <td>{{ prov.ruc }}</td>
+                        <td>{{ prov.nombre }}</td>
+                        <td>{{ prov.email }}</td>
+                        <td>{{ prov.direccion }}</td>
+                        <td>
+                            {% if perms.ServicioTecnico.change_proveedor %}
+                                <a class="btn btn-info" href="{% url 'modificarProveedor' prov.ruc %}" role="button">Editar</a>
+                            {% endif %}
+
+                            {% if perms.ServicioTecnico.delete_proveedor %}
+                                <a class="btn btn-danger" onclick="eliminar_Proveedor({{ prov.ruc }})" href="#" role="button">Eliminar</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div>
+                {% include 'paginator.html' %}
+            </div>
+        </div>
+        <div class="card-footer text-muted"></div>
+        
+    </div>
+</div>
+{% endblock %}
+

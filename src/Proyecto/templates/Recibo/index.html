@@ -1,0 +1,92 @@
+{% extends "base1.html" %}
+
+{% block js %}
+
+    <script>
+        function eliminar_Recibo(id) {
+            //console.log(id)
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'La acción no se puede revertir',
+                icon: 'question',
+                showCancelButton: true,
+                cancelButtonText: 'No, Cancelar',
+                confirmButtonText: 'Sí, Eliminar',
+                reverseButtons:true,
+                confirmButtonColor: '#dc3545'
+            })
+            .then(function(result){
+                if(result.isConfirmed) {
+                    window.location.href = "eliminar/"+id+"/"
+                }
+            })
+        }
+    </script>
+
+{% endblock %}
+
+{% block tittle %} Lista de Recibos {% endblock %}
+
+{% block body %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'registrarRecibo' %}" role="button">Agregar nuevo Recibo</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Recibos</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha de Emisión</th>
+                    <th>Sub Total de Productos</th>
+                    <th>Valor Total</th>
+                    <th>Fecha de Cierre</th>
+                    <th>Estado</th>
+                    <th>Sub Total de Servicios</th>
+                    <th>Tipo</th>
+                    <th>Operaciones</th>
+                </tr>  
+            </thead>
+            <tbody>
+                {% for rec in entity %}
+                <tr>
+                    <td>{{ rec.id }}</td>
+                    <td>{{ rec.fechaEmision }}</td>
+                    <td>{{ rec.subTotalProductos }}</td>
+                    <td>{{ rec.valorTotal }}</td>
+                    <td>{{ rec.fechaCierre }}</td>
+                    <td>{{ rec.estado }}</td>
+                    <td>{{ rec.subTotalServicios }}</td>
+                    <td>{{ rec.tipo }}</td>
+                    <td>
+                        {% if perms.ServicioTecnico.change_recibo %}
+                            <a name="" id="" class="btn btn-info" href="{% url 'modificarRecibo' rec.id %}" role="button">Editar</a>
+                        {% endif %}
+
+                        {% if perms.ServicioTecnico.delete_recibo %}
+                            <a name="" id="" class="btn btn-danger" onclick="eliminar_Recibo({{ rec.id }})" href="#" role="button">Eliminar</a>
+                        {% endif %}
+
+                        {% if perms.ServicioTecnico.view_recibo %}
+                            <a name="" id="" class="btn btn-warning" href="/pdf/{{rec.id}}" role="button">PDF</a>
+                        {% endif %}
+
+                        {% if perms.ServicioTecnico.view_recibo %}
+                            <a name="" id="" class="btn btn-success" href="/send/" role="button">Enviar Correo</a>
+                        {% endif %}    
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            {% include 'paginator.html' %}
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base1.html" %}
+
+{% block js %}
+
+    <script>
+        function eliminar_Pedido(id) {
+            console.log(id)
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'La acción no se puede revertir',
+                icon: 'question',
+                showCancelButton: true,
+                cancelButtonText: 'No, Cancelar',
+                confirmButtonText: 'Sí, Eliminar',
+                reverseButtons:true,
+                confirmButtonColor: '#dc3545'
+            })
+            .then(function(result){
+                if(result.isConfirmed) {
+                    window.location.href = "eliminar/"+id+"/"
+                }
+            })
+        }
+    </script>
+
+{% endblock %}
+
+{% block tittle %} Lista de Pedidos {% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <div class="card">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-success" href="{% url 'registrarPedido' %}" role="button">Agregar nuevo Pedido</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Pedidos</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tiempo Entrega</th>
+                        <th>Descripción</th>
+                        <th>Operaciones</th>
+                    </tr>  
+                </thead>
+                <tbody>
+                    {% for ped in entity %}
+                    <tr>
+                        <td>{{ ped.id }}</td>
+                        <td>{{ ped.tiempoEntrega }}</td>
+                        <td>{{ ped.descripcion }}</td>
+                        <td>
+                        {% if perms.ServicioTecnico.change_pedido %}
+                            <a class="btn btn-info" href="{% url 'modificarPedido' ped.id %}" role="button">Editar</a>
+                        {% endif %}
+
+                        {% if perms.ServicioTecnico.delete_pedido %}
+                            <a class="btn btn-danger" onclick="eliminar_Pedido({{ ped.id }})" href="#" role="button">Eliminar</a>
+                        {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div>
+                {% include 'paginator.html' %}
+            </div>
+        </div>
+        <div class="card-footer text-muted"></div>
+
+    </div>
+</div>
+{% endblock %}

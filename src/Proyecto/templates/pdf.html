@@ -1,0 +1,74 @@
+<style type="text/css">
+    body {
+        text-align: center;
+        margin: 0 auto;
+        width: 650px;
+        font-family: 'Open Sans', sans-serif;
+        background-color: #e2e2e2;
+        display: block;
+    }
+
+    .text-center {
+        text-align: center
+    }
+
+    .main-bg-light {
+        background-color: #fafafa;
+    }
+
+    .title {
+        color: #444444;
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-bottom: 0;
+        text-transform: uppercase;
+        display: inline-block;
+        line-height: 1;
+    }
+
+    table {
+        margin-top: 30px
+    }
+
+    table.top-0 {
+        margin-top: 0;
+    }
+
+    table.order-detail,
+    .order-detail th,
+    .order-detail td {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
+
+</style>
+<body>
+    <h2>RECIBO TIPO: {{rec.tipo}}</h2>
+    <table border="1">
+        <thead>
+            <th>ID</th>
+            <th>Fecha de Emisión</th>
+            <th>Sub Total de Productos</th>
+            <th>Valor Total</th>
+            <th>Fecha de Cierre</th>
+            <th>Estado</th>
+            <th>Sub Total de Servicios</th>
+            <th>Tipo</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ rec.id }}</td>
+                <td>{{ rec.fechaEmision }}</td>
+                <td>{{ rec.subTotalProductos }}</td>
+                <td>{{ rec.valorTotal }}</td>
+                <td>{{ rec.fechaCierre }}</td>
+                <td>{{ rec.estado }}</td>
+                <td>{{ rec.subTotalServicios }}</td>
+                <td>{{ rec.tipo }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+</body>

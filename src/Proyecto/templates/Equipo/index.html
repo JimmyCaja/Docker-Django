@@ -1,0 +1,169 @@
+{% extends "base1.html" %}
+
+{% block js %}
+
+    <script>
+        function eliminar_Equipo(id, descripcion) {
+            console.log(id)
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'La acción no se puede revertir',
+                icon: 'question',
+                showCancelButton: true,
+                cancelButtonText: 'No, Cancelar',
+                confirmButtonText: 'Sí, Eliminar',
+                reverseButtons:true,
+                confirmButtonColor: '#dc3545'
+            })
+            .then(function(result){
+                if(result.isConfirmed) {
+                    //window.location.href = "eliminar/"+id+"/"
+                    window.location.assign("/Equipo/"+descripcion+"/eliminar/"+id+"/");
+                }
+            })
+        }
+    </script>
+
+{% endblock %}
+
+{% block tittle %} Lista de Equipos {% endblock %}
+
+{% block body %}
+
+<div class="container py-4">
+    <div class="card">
+        {% if user.id == 1 or user.username == 'vendedor' or user.username == 'tecnico' %}
+            <div class="card-header">
+                <a name="" id="" class="btn btn-success" href="{% url 'registrarEquipo' user.id %}" role="button">Agregar nuevo Equipo</a>
+            </div>
+        {% endif %}
+
+        <div class="card-body">
+            {% if user.id == 1  or user.username == 'vendedor' or user.username == 'tecnico' %}
+            <h4 class="card-title">Equipos</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Descripción</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Número de Serie</th>
+                            <th>Observaciones</th>
+                            <th>Operaciones</th>
+                        </tr>  
+                    </thead>
+                    <tbody>
+                        {% for eq in entity %}
+                        <tr>
+                            <td>{{ eq.id }}</td>
+                            <td>{{ eq.descripcion }}</td>
+                            <td>{{ eq.marca }}</td>
+                            <td>{{ eq.modelo }}</td>
+                            <td>{{ eq.numSerie }}</td>
+                            <td>{{ eq.observaciones }}</td>
+                            <td>
+                            {% if perms.ServicioTecnico.change_equipo %}
+                                <a name="" id="" class="btn btn-info" href="{% url 'modificarEquipo' user.id eq.id %}" role="button">Editar</a>
+                            {% endif %}
+                            
+                            {% if perms.ServicioTecnico.delete_equipo %}
+                                <a name="" id="" class="btn btn-danger" onclick="eliminar_Equipo({{ eq.id }}, {{ user.id }})" href="#" role="button">Eliminar</a>
+                            {% endif %}
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div>
+                    {% include 'paginator.html' %}
+                </div>
+            {% endif %}
+            {% if user.id > 1 and user.username != 'vendedor' and user.username != 'tecnico' %}
+                <h4 class="card-title">Recibos</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha de Emisión</th>
+                            <th>Sub Total de Productos</th>
+                            <th>Valor Total</th>
+                            <th>Fecha de Cierre</th>
+                            <th>Estado</th>
+                            <th>Sub Total de Servicios</th>
+                            <th>Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for rec in recibo %}
+                        <tr>
+                            <td>{{ rec.id }}</td>
+                            <td>{{ rec.fechaEmision }}</td>
+                            <td>{{ rec.subTotalProductos }}</td>
+                            <td>{{ rec.valorTotal }}</td>
+                            <td>{{ rec.fechaCierre }}</td>
+                            <td>{{ rec.estado }}</td>
+                            <td>{{ rec.subTotalServicios }}</td>
+                            <td>{{ rec.tipo }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <h4 class="card-title">Equipos</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Descripción</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Número de Serie</th>
+                            <th>Observaciones</th>
+                        </tr>  
+                    </thead>
+                    <tbody>
+                        {% for equ in equipos %}
+                        <tr>
+                            <td>{{ equ.id }}</td>
+                            <td>{{ equ.descripcion }}</td>
+                            <td>{{ equ.marca }}</td>
+                            <td>{{ equ.modelo }}</td>
+                            <td>{{ equ.numSerie }}</td>
+                            <td>{{ equ.observaciones }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <h4 class="card-title">Diagnosticos</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Descripción</th>
+                            <th>Defecto</th>
+                            <th>Operaciones</th>
+                            <th>Equipo</th>
+                        </tr>  
+                    </thead>
+                    <tbody>
+                        {% for diag in diagnosticos %}
+                        <tr>
+                            <td>{{ diag.id }}</td>
+                            <td>{{ diag.descripcion }}</td>
+                            <td>{{ diag.defecto }}</td>
+                            <td>{{ diag.empleado }}</td>
+                            <td>{{ diag.equipo }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+        <div class="card-footer text-muted"></div>
+        
+    </div>
+</div>
+{% endblock %}

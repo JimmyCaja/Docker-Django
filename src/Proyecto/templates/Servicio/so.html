@@ -1,0 +1,43 @@
+{% extends "../base1.html" %} 
+
+{% load static %}
+
+
+{% block js %}
+  
+{% endblock js %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="center-vertical bg-dark">
+        <div class="about-us-section bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                        <br><br>
+                        <div class="img-head">
+                            <img src="{% static 'images/SO.jpg' %}" class="card-img-top" alt="Servicio1">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h2 class="text-head">
+                            Instalación de sistemas operativos
+                        </h2>
+                        <div class="break-small mb-2">
+                            <p class="text-para" style="text-align: justify">
+                                Un sistema operativo es un conjunto de programas que permite manejar la memoria, disco, medios de almacenamiento de información y los diferentes periféricos o recursos de nuestra computadora, como son el teclado, el mouse, la impresora, la placa de red, entre otros.
+                                <br><br>
+                                Los periféricos utilizan un driver o controlador y son desarrollados por los fabricantes de cada equipo. Encontramos diferentes sistemas operativos como Windows, Linux, MAS OS, en sus diferentes versiones.
+                                <br><br>
+                                Dentro de las tareas que realiza el sistema operativo, en particular, se ocupa de gestionar la memoria de nuestro sistema y la carga de los diferentes programas, para ello cada programa tiene una prioridad o jerarquía y en función de la misma contará con los recursos de nuestro sistema por más tiempo que un programa de menor prioridad.
+                            </p>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

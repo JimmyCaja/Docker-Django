@@ -1,0 +1,76 @@
+{% extends "./base1.html" %} 
+
+{% load static %}
+
+
+{% block js %}
+  
+{% endblock js %}
+
+{% block body %}
+<div class="container py-5">
+<div class="container">
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button btn btn-sm btn-outline-primary text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Dirección
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body bg-warning">
+        <strong>Bolivar y Sucre</strong>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed btn btn-sm btn-outline-primary text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Teléfono
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body bg-info">
+        <strong>2521293</strong> 
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed btn btn-sm btn-outline-primary text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Correos electrónicos
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body bg-success">
+        <strong>EmpresaXYZ@gmail.com</strong>
+        <br>
+        <strong>Boooking@gmail.com</strong>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="container text-center">
+    <h3 class="display-6">Nuestras Redes Sociales</h3>
+<div class="icon">
+    <div class="op icon__facebook">
+      <a href="https://www.facebook.com/CajamarcaEstudios"><ion-icon class="fa fa-facebook"></ion-icon></a>
+    </div>
+    <div class="op icon__twitter">
+      <a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+    </div>
+    <div class="op icon__whatsapp">
+      <a href="https://www.whatsapp.com/"><ion-icon class="fa fa-whatsapp"></ion-icon></a>
+    </div>
+    <div class="op icon__linkedin">
+      <a href="https://ec.linkedin.com/"><ion-icon class="fa fa-linkedin"></ion-icon></a>
+    </div>
+    <div class="op icon__instagram">
+      <a href="https://www.instagram.com/"><ion-icon class="fa fa-instagram"></ion-icon></a>
+    </div>
+</div>
+</div>
+
+{% endblock %}
